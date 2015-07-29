@@ -1,4 +1,4 @@
-package oo
+package oo.constructor
 
 /**
  * Traits may not have constructor parameters.
@@ -12,7 +12,7 @@ package oo
  *
  *
  */
-object MyClass {
+object Constructor {
 
   def main(args: Array[String]) {
     val a1 = new Address("1 Scala Lane", "Anytown", "CA", "98765")
@@ -55,12 +55,11 @@ case class Person(name: String, age: Option[Int] = None, address: Option[Address
 
 }
 
-class Employee(
-                  name: String,
-                  age: Option[Int] = None,
-                  address: Option[Address] = None,
-                  val title: String = "[unknown]",
-                  val manager: Option[Employee] = None) extends Person(name, age, address) {
+class Employee(name: String,
+               age: Option[Int] = None,
+               address: Option[Address] = None,
+               val title: String = "[unknown]",
+               val manager: Option[Employee] = None) extends Person(name, age, address) {
   override def toString = {
     s"Employee($name, $age, $address, $title, $manager)"
   }
