@@ -1,7 +1,11 @@
 package collection
 
+import scala.collection.mutable.ListBuffer
+
 /**
  * A list represents a linked list.
+ *
+ * List is immutable, while ListBuffer is mutable.
  */
 
 object MyList {
@@ -52,6 +56,7 @@ object MyList {
 
     /**
      * Concatenates lists.
+     * Note that List is immutable
      *
      */
     val fruit1 = List("apples", "oranges")
@@ -59,6 +64,7 @@ object MyList {
 
     // ++
     var fruit = fruit1 ++ fruit2 // ++ is preferred to :::
+    fruit = fruit1 :: "banana"
 
     // xs ::: ys ::: zs = xs ::: (ys ::: zs) = zs.:::(ys).:::(xs)
     println(s"fruit1 ::: fruit2 : ${fruit1 ::: fruit2}")
@@ -95,6 +101,16 @@ object MyList {
     // reduce
     val sumSquares2 = numbers.reduce((x, y) => x*x + y*y)
     println(s"sumSquares using reduce: $sumSquares2")
+
+    /**
+     * ListBuffer: a mutable list
+     */
+    var animals = new ListBuffer[String]()
+    animals += "Dog"
+    animals += "Cat"
+
+    // convert ListBuffer to a List
+    val animalsList = animals.toList
 
   }
 
