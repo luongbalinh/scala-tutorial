@@ -13,12 +13,17 @@ object Comprehension {
     println(filterFruits)
     printOptionFruits1
     printOptionFruits2
+
+
+    val values: List[Tuple2[Int, Boolean]] = List((1, false), (2, false), (3, false), (4, false))
+    val result = for {value <- values
+                      if (value._2)} yield value
+    println(result)
   }
 
   val fruits = List("apple", "oranges", "banana")
 
   // This comprehension only performs side effects, hence is called for loop.
-  // <-  is called generator operator
   def printFruits = {
     println("\nAll fruits:")
     for (fruit <- fruits) {
@@ -26,16 +31,17 @@ object Comprehension {
     }
   }
 
+  // <- is called generator operator
   // When there are multiple generators, all but the last are converted to flatMap invocations. The last is a map
   // invocation, i.e. a List is generated.
   def extractFruitsCharacters = {
-    println("\nAll fruits:")
+    println("\nAll fruits with flattern:")
     for {
       fruit <- fruits
       f <- fruit} yield f
   }
 
-  // use if for  filtering. Each if must be on a separate line.
+  // use if for filtering. Each if must be on a separate line.
   // Filtering expressions are called guards.
   // Best practice: use curly braces instead of parentheses for multiple filtering conditions.
 
@@ -52,11 +58,11 @@ object Comprehension {
 
   // for yield store resulting elements in a new collection.
   // the first expression has to be an generator operator, i.e. cannot use assign (=) operator.
-  def filterFruits = {
+  def filterFruits: List[String] = {
     println("\nPrinting filtered fruits:")
     for {
       fruit <- fruits
-      //      if fruit.contains("a")
+      if fruit.contains("a")
       capitalizedFruit = fruit.toUpperCase()
     } yield capitalizedFruit
   }

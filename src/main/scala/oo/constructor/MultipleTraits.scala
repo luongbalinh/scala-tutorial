@@ -1,5 +1,9 @@
 package oo.constructor
 
+/**
+  * A trait can extends a class.
+  */
+
 object MultipleTraits {
   def main(args: Array[String]) {
     val c2 = new C2

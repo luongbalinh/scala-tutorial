@@ -64,7 +64,7 @@ object MyList {
 
     // ++
     var fruit = fruit1 ++ fruit2 // ++ is preferred to :::
-    fruit = fruit1 :: "banana"
+    fruit = fruit1 :+ "banana"
 
     // xs ::: ys ::: zs = xs ::: (ys ::: zs) = zs.:::(ys).:::(xs)
     println(s"fruit1 ::: fruit2 : ${fruit1 ::: fruit2}")
@@ -95,11 +95,11 @@ object MyList {
     println(s"evenNumbers : $evenNumbers")
 
     // foldLeft
-    val sumSquares = numbers.foldLeft(0.0)((x, y) => Math.pow(x,2) + Math.pow(y, 2))
+    val sumSquares = numbers.foldLeft(0.0)((x, y) => Math.pow(x, 2) + Math.pow(y, 2))
     println(s"sumSquares using foldLeft: $sumSquares")
 
     // reduce
-    val sumSquares2 = numbers.reduce((x, y) => x*x + y*y)
+    val sumSquares2 = numbers.reduce((x, y) => x * x + y * y)
     println(s"sumSquares using reduce: $sumSquares2")
 
     /**
@@ -111,7 +111,6 @@ object MyList {
 
     // convert ListBuffer to a List
     val animalsList = animals.toList
-
   }
 
 }

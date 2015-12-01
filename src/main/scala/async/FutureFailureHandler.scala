@@ -10,10 +10,10 @@ import scala.util.Random
 
 object FuturesApp extends App {
 
-  // `future` blocks asynchronously execute in a different thread and return a `val`
+  // Future blocks asynchronously execute in a different thread and return a `val`
   // asynchronous results can be trapped via `onSuccess`, `onFailure` and `onComplete` callbacks
 
-  val sayHello = future {
+  val sayHello = Future {
     Thread.sleep(1000)
     "hello"
   }
@@ -26,7 +26,7 @@ object FuturesApp extends App {
 
   Thread.sleep(2000)
 
-  val tryDivideByZero = future {
+  val tryDivideByZero = Future {
     Thread.sleep(1000)
     1 / 0
   }
@@ -44,7 +44,7 @@ object FuturesApp extends App {
   // or use `map` to "chain" them
   // `map` returns a future which can be trapped via callbacks
 
-  val firstLove = future {
+  val firstLove = Future {
     Thread.sleep(500)
     "i love you"
   }

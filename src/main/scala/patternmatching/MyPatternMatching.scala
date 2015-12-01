@@ -1,9 +1,7 @@
 package patternmatching
 
-object MyPatternMatching {
-  def main(args: Array[String]) {
-simpleMatching
-  }
+object MyPatternMatching extends App {
+  simpleMatching
 
   def simpleMatching = {
     for {
@@ -19,4 +17,12 @@ simpleMatching
     }
   }
 
+  // use pattern martching in value definition
+  def createPersonInfo(): (String, Int) = ("Linh", 20)
+  val (name, _) =  createPersonInfo()
+  println(s"name $name")
+
 }
+
+
+

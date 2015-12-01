@@ -4,26 +4,24 @@ import dsls.internal.common.{Amount, Deduction, Deductions}
 
 import scala.language.postfixOps
 
-object Payroll {
+object Payroll extends App {
 
   import dsl._
   import dsls.internal.common._
 
-  def main(args: Array[String]) = {
-    val biweeklyDeductions = biweekly { deduct =>
-      deduct federal_tax (25.0 percent)
-      deduct state_tax (5.0 percent)
-      deduct insurance_premiums (500.0 dollars)
-      deduct retirement_savings (10.0 percent)
-    }
-
-    println(biweeklyDeductions)
-    val annualGross = 100000.0
-    val gross = biweeklyDeductions.gross(annualGross)
-    val net = biweeklyDeductions.net(annualGross)
-    print(f"Biweekly pay (annual: $$${annualGross}%.2f): ")
-    println(f"Gross: $$${gross}%.2f, Net: $$${net}%.2f")
+  val biweeklyDeductions = biweekly { deduct =>
+    deduct federal_tax (25.0 percent)
+    deduct state_tax (5.0 percent)
+    deduct insurance_premiums (500.0 dollars)
+    deduct retirement_savings (10.0 percent)
   }
+
+  println(biweeklyDeductions)
+  val annualGross = 100000.0
+  val gross = biweeklyDeductions.gross(annualGross)
+  val net = biweeklyDeductions.net(annualGross)
+  print(f"Biweekly pay (annual: $$$annualGross%.2f): ")
+  println(f"Gross: $$$gross%.2f, Net: $$$net%.2f")
 }
 
 object dsl {
@@ -32,9 +30,9 @@ object dsl {
     f(new DeductionsBuilder("Biweekly", 26.0))
 
   class DeductionsBuilder(
-                           name: String,
-                           divisor: Double = 1.0,
-                           deducts: Vector[Deduction] = Vector.empty) extends Deductions(
+    name: String,
+    divisor: Double = 1.0,
+    deducts: Vector[Deduction] = Vector.empty) extends Deductions(
     name, divisor, deducts) {
 
     def federal_tax(amount: Amount): DeductionsBuilder = {

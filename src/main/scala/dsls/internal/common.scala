@@ -17,9 +17,8 @@ object common {
   }
 
   /**
-   * An implicit class that handles a conversion from a Double to the correct Amount subtype.
-   * @param amount
-   */
+    * An implicit class that handles a conversion from a Double to the correct Amount subtype.
+    */
   implicit class Units(amount: Double) {
     def percent = Percentage(amount)
 
@@ -33,8 +32,8 @@ object common {
 
   // A type for all deductions
   case class Deductions(name: String,
-                        divisorFromAnnualPay: Double = 1.0,
-                        var deductions: Vector[Deduction] = Vector.empty) {
+    divisorFromAnnualPay: Double = 1.0,
+    var deductions: Vector[Deduction] = Vector.empty) {
 
     def gross(annualSalary: Double): Double = annualSalary / divisorFromAnnualPay
 
