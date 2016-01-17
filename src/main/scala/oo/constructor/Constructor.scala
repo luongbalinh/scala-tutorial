@@ -1,10 +1,7 @@
 package oo.constructor
 
 /**
-  * Traits cannot have constructor parameters.
-  *
-  * Objects can't take parameters. You can't instantiate a singleton object with the new keyword, you
-  * can’t pass parameters to its primary constructor.
+  * Traits and objects cannot have constructor parameters.
   *
   * use `override` to override a concrete member in a parent class.
   *
@@ -33,7 +30,7 @@ object Constructor {
   }
 }
 
-//  the primary constructor is the entire body of the class
+// the primary constructor is the entire body of the class
 case class Address(street: String, city: String, state: String, zip: String) {
 
   /** an auxiliary constructor is named this and it must call the primary constructor or another auxiliary

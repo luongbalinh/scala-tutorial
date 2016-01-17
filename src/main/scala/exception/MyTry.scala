@@ -11,10 +11,10 @@ import scala.util.{Failure, Success, Try}
 
 object MyTry extends App {
   // use getOrElse when you do not care about the error message
-  divideXByY(1, 0) getOrElse 0
+  divide(1, 0) getOrElse 0
 
   // use match to get error message
-  divideXByY(1, 0) match {
+  divide(1, 0) match {
     case Success(i) => println(s"Success, value is: $i")
     case Failure(s) => println(s"Failed, message is: $s")
   }
@@ -29,17 +29,13 @@ object MyTry extends App {
 
   z.getOrElse(0) * 2
 
-  // map Try[A] to Try[B]
+  // foreach, map, flatMap, filter, and for comprehension
   parseURL("http://danielwestheide.com").map(_.getProtocol)
-  // results in Success("http")
 
   parseURL("garbage").map(_.getProtocol)
 
-  // results in Failure(java.net.MalformedURLException: no protocol: garbage)
-
-  def divideXByY(x: Int, y: Int): Try[Int] = {
-    Try(x / y)
-  }
+  def divide(x: Int, y: Int): Try[Int] = Try(x / y)
 
   def parseURL(url: String): Try[URL] = Try(new URL(url))
+
 }

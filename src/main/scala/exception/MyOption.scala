@@ -18,11 +18,15 @@ object MyOption extends App {
     }
   }
 
-  // Get the value from an Option: (1) getOrElse, (2) foreach, and (3) match
-  stringToInt("10").getOrElse(0)
+  /**
+    * Option[A] is a container for a value of type A, hence can foreach, map, flatMap, filter, and for comprehension.
+    * None values will be ignored.
+    * Option[Option[T]] flatMap becomes Option[T]
+    */
   stringToInt("10").foreach { i => println(i) }
   stringToInt("10") match {
     case Some(i) => println(i)
     case None => println("invalid input")
   }
+
 }

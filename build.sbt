@@ -12,7 +12,8 @@ libraryDependencies ++= Seq(
   "com.redmart.micro-service-dto" % "member-service-dto" % "1.0",
   "com.typesafe.play" % "play-json_2.11" % "2.4.3",
   "org.scala-lang.modules" %% "scala-pickling" % "0.10.1",
-  "com.github.kstyrc" % "embedded-redis" % "0.6"
+  "com.github.kstyrc" % "embedded-redis" % "0.6",
+  "org.apache.commons" % "commons-lang3" % "3.4"
 
 )
 

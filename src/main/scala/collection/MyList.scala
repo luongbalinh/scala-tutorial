@@ -3,16 +3,11 @@ package collection
 import scala.collection.mutable.ListBuffer
 
 /**
- * A list represents a linked list.
- *
- * List is immutable, while ListBuffer is mutable.
+ * A list represents a linked list. List is immutable, while ListBuffer is mutable.
  */
 
 object MyList {
   def main(args: Array[String]): Unit = {
-    /**
-     * List definitions
-     */
     val emptyList0 = Nil // Nil and List() are the same. Nil is preferred.
     val emptyList1 = List()
     val emptyList2 = List.empty[Int]
