@@ -31,6 +31,8 @@ object Constructor {
 }
 
 // the primary constructor is the entire body of the class
+// use default values for constructor parameters to eliminate auxiliary constructors.
+// If defaults values come from complicated computation, e.g. Address class above, then use auxiliary constructor.
 case class Address(street: String, city: String, state: String, zip: String) {
 
   /** an auxiliary constructor is named this and it must call the primary constructor or another auxiliary
@@ -47,8 +49,6 @@ object Address {
   def zipToState(zip: String) = "CA"
 }
 
-// use default values for constructor parameters to eliminate auxiliary constructors.
-// If defaults values come from complicated computation, e.g. Address class above, then use auxiliary constructor.
 case class Person(name: String, age: Option[Int] = None, address: Option[Address] = None) {
   // validate constructor parameters, like Google Guava
   require(validateName(name), "Invalid name")

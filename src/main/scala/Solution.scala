@@ -1,9 +1,9 @@
-
+import scala.concurrent.duration
+import scala.concurrent.duration.Duration
+import com.typesafe.config.ConfigFactory
 
 object Solution extends App {
-
-  //  import FileHelper._
-
-  //  implicit val file = "/Users/Luong/Documents/repos/templates/scala-tutorial/src/main/scala/input.txt"
+  val properties = ConfigFactory.load()
+  val hatApiHost = properties.getString("PCS_HOST")
+  println("HERE " + hatApiHost)
 }
-

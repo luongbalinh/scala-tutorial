@@ -1,10 +1,12 @@
 package collection
 
 /**
- * The for comprehension syntax is actually syntactic sugar provided by the compiler for calling the collection
- * methods foreach, map, flatMap, and withFilter.
- *
- */
+  * The for comprehension syntax is actually syntactic sugar provided by the compiler for calling the collection
+  * methods foreach, map, flatMap, and withFilter.
+  *
+  * <- is called generator operator. The left part of a generator ooperator is always a 'val'.
+  * A new value of the val will be created for each iteration
+  */
 object Comprehension {
   def main(args: Array[String]) {
     printFruits
@@ -16,8 +18,10 @@ object Comprehension {
 
 
     val values: List[Tuple2[Int, Boolean]] = List((1, false), (2, false), (3, false), (4, false))
-    val result = for {value <- values
-                      if (value._2)} yield value
+    val result = for {
+      value <- values
+      if value._2
+    } yield value
     println(result)
   }
 
@@ -31,7 +35,6 @@ object Comprehension {
     }
   }
 
-  // <- is called generator operator
   // When there are multiple generators, all but the last are converted to flatMap invocations. The last is a map
   // invocation, i.e. a List is generated.
   def extractFruitsCharacters = {
