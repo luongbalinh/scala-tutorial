@@ -2,14 +2,11 @@ import com.typesafe.sbt.SbtNativePackager.autoImport._
 import com.typesafe.sbt.packager.linux.LinuxPlugin.autoImport._
 import com.typesafe.sbt.packager.rpm.RpmPlugin.autoImport._
 
-name := """scala-tutorial"""
+name := "scala-tutorial"
 
 version := "1.0"
 
 scalaVersion := "2.11.7"
-//val specs2V = "3.6.6"
-//val sprayV = "1.3.3"
-
 
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 
@@ -31,7 +28,9 @@ libraryDependencies ++= Seq(
   "com.ning" % "async-http-client" % "1.9.21",
   "io.jsonwebtoken" % "jjwt" % "0.6.0",
   "org.specs2" %% "specs2-core" % "3.6.6" % "test",
-  "com.typesafe" % "config" % "1.3.0"
+  "com.typesafe" % "config" % "1.3.0",
+  "me.moocar" % "logback-gelf" % "0.3",
+  "ch.qos.logback" % "logback-classic" % "1.1.3"
 )
 
 resolvers ++= Seq(
@@ -63,3 +62,19 @@ exportJars := true
 defaultLinuxInstallLocation := "/Users/luongbalinh/Desktop"
 daemonUser in Linux := normalizedName.value
 daemonGroup in Linux := (daemonUser in Linux).value
+
+javaOptions in Universal ++= Seq(
+  // Since play uses separate pidfile we have to provide it with a proper path
+  s"-Dpidfile.path=/var/run/${packageName.value}/play.pid",
+
+  s"-Dconfig.file=/opt/${packageName.value}/conf/application.conf",
+
+  s"-Dlogger.file=/opt/${packageName.value}/conf/logback.xml"
+)
+
+publishArtifact in (Compile, packageDoc) := false
+
+publishArtifact in (Compile, packageSrc) := false
+
+publishArtifact in (Compile, packageConfiguration) := false
+

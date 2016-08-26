@@ -1,17 +1,18 @@
 package utils
 
+import org.slf4j.LoggerFactory
+
 object CsvHelper {
+val logger = LoggerFactory.getLogger(getClass)
 
   def escape(s: String): String = {
     val replacedQuoteString = replaceQuote(s)
     handleEscapeCharacters(replacedQuoteString)
   }
 
-  private def replaceQuote(s: String): String = {
-    if (s.contains(Quote))
-      s.replace(Quote, EscapedQuote)
-    else
-      s
+  def replaceQuote(s: String): String = {
+    logger.debug("replacing quote")
+    if (s.contains(Quote)) s.replace(Quote, EscapedQuote) else s
   }
 
   private def handleEscapeCharacters(s: String): String = {

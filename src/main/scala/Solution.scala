@@ -1,9 +1,11 @@
-import scala.concurrent.duration
-import scala.concurrent.duration.Duration
-import com.typesafe.config.ConfigFactory
+import org.slf4j.{LoggerFactory, MDC}
 
 object Solution extends App {
-  val properties = ConfigFactory.load()
-  val hatApiHost = properties.getString("PCS_HOST")
-  println("HERE " + hatApiHost)
+  MDC.put("first", "linh")
+  MDC.put("last", "linh")
+
+  val logger = LoggerFactory.getLogger(getClass)
+  logger.info("msg 1")
+  logger.info("msg 2")
 }
+
