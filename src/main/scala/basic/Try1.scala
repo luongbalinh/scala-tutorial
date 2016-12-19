@@ -1,4 +1,4 @@
-package exception
+package basic
 
 import java.net.URL
 
@@ -9,7 +9,7 @@ import scala.util.{Failure, Success, Try}
   * Using Try when you need the error message
   */
 
-object MyTry extends App {
+object Try1 extends App {
   // use getOrElse when you do not care about the error message
   divide(1, 0) getOrElse 0
 
@@ -30,9 +30,9 @@ object MyTry extends App {
   z.getOrElse(0) * 2
 
   // foreach, map, flatMap, filter, and for comprehension
-  parseURL("http://danielwestheide.com").map(_.getProtocol)
+  parseURL("http://danielwestheide.com") map (_.getProtocol)
 
-  parseURL("garbage").map(_.getProtocol)
+  parseURL("garbage") map (_.getProtocol)
 
   def divide(x: Int, y: Int): Try[Int] = Try(x / y)
 

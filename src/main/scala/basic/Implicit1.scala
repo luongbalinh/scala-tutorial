@@ -1,4 +1,4 @@
-package implicits
+package basic
 
 /**
   * Populate a method argument. To function as an implicit value, it must not take arguments itself,

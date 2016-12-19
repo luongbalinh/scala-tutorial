@@ -1,28 +1,35 @@
 package designpattern.creational
 
-object Factory {
-  def main(args: Array[String]) {
-    val dog = Animal("dog")
-    dog.speak
-    val cat = Animal("cat")
-    cat.speak
-  }
+/**
+ * Concrete instances can only be created through the factory.
+ * Class constructors should be hidden from all other classes.
+ */
+
+object Factory1 extends App {
+  Animal("dog").speak()
+  Animal("cat").speak()
 }
 
 trait Animal {
-  def speak
-}
-
-private class Dog extends Animal {
-  def speak = println("woof")
-}
-
-private class Cat extends Animal {
-  override def speak = println("meow")
+  def speak()
 }
 
 object Animal {
-  def apply(kind: String) = kind match {
+  // make Dog and Cat private to prevent creating Dog and Cat instances directly.
+  private class Dog extends Animal {
+    override def speak(): Unit = {
+      println("woof")
+    }
+  }
+
+  private class Cat extends Animal {
+    override def speak(): Unit = {
+      println("meoo")
+    }
+  }
+
+  // factory method
+  def apply(s: String) = s match {
     case "dog" => new Dog
     case "cat" => new Cat
   }

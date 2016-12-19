@@ -8,7 +8,7 @@ import scala.util.{Failure, Random, Success}
  * Future is a write-once container – after a future has been completed, it is effectively immutable.
  */
 
-object MyFuture {
+object Future1 {
   def main(args: Array[String]) {
     grind("baked beans").onComplete {
       case Success(ground) => println(s"got my $ground")

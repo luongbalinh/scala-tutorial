@@ -1,4 +1,4 @@
-package enumeration
+package basic
 
 // https://github.com/lloydmeta/enumeratum
 object Enum extends App {

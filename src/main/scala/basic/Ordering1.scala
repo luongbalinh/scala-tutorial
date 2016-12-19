@@ -1,4 +1,4 @@
-package ordering
+package basic
 
 object MyOrdering extends App {
   val p1 = Person(10)

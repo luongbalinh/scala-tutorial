@@ -1,11 +1,9 @@
 package typesystem
 
-object PathDependentType {
-  def main(args: Array[String]) {
-    val s1 = new Service
-    val s2 = new Service {
-      //      override val logger = s1.logger // ERROR
-    }
+object PathDependentType extends App {
+  val s1 = new Service
+  val s2 = new Service {
+    override val logger = s1.logger // ERROR
   }
 }
 
@@ -19,8 +17,8 @@ class Service {
 }
 
 /**
- * Inside a type body, but outside a method definition, `this` refers to the type itself.
- */
+  * Inside a type body, but outside a method definition, `this` refers to the type itself.
+  */
 trait T1 {
 
   class C
@@ -36,9 +34,7 @@ trait X {
 class C1 {
   var x = "1"
 
-  /**
-   * `this` inside the body refers to the current instance.
-   */
+  // `this` refers to the current instance.
   def setX1(x: String): Unit = this.x = x
 
   def setX2(x: String): Unit = C1.this.x = x
@@ -65,33 +61,32 @@ class C3 extends C2 with X {
 }
 
 /**
- * Reach a nested type with a period-delimited path expression.
- *
- * The last elements of a type path must be `stable`, i.e. packages, singleton objects, or
- * type declarations that alias the same.
- *
- * The last element in the path can be unstable, including classes, traits, and type members.
- */
+  * Reach a nested type with a period-delimited path expression.
+  *
+  * The last elements of a type path must be `stable`, i.e. packages, singleton objects, or
+  * type declarations that alias the same.
+  *
+  * The last element in the path can be unstable, including classes, traits, and type members.
+  */
 package P1 {
 
-object O1 {
+  object O1 {
 
-  object O2 {
-    val name = "name"
+    object O2 {
+      val name = "name"
+    }
+
+    class C1 {
+      val name = "name"
+    }
+
   }
-
-  class C1 {
-    val name = "name"
-  }
-
-}
 
 }
 
 class C7 {
-
-  val name1 = P1.O1.O2.name // Okay - a reference to a field
-  type C1 = P1.O1.C1 // Okay - a reference to a "leaf" class
-  val c1 = new P1.O1.C1 // Okay - same reason
-  // val name2 = P1.O1.C1.name // ERROR - P1.O1.C1 isn't stable.
+  val name1 = P1.O1.O2.name
+  //   val name2 = P1.O1.C1.name // ERROR - P1.O1.C1 isn't stable.
+  type C1 = P1.O1.C1
+  val c1 = new P1.O1.C1
 }

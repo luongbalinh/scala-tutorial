@@ -1,7 +1,7 @@
-package exception
+package basic
 
 // http://blog.xebia.com/2015/02/18/try-option-or-either/
-object MyOption extends App {
+object Option1 extends App {
 
   // Option is used to convert a partial function into a total function.
   def mean(numbers: Seq[Double]): Option[Double] = {
@@ -23,10 +23,5 @@ object MyOption extends App {
     * None values will be ignored.
     * Option[Option[T]] flatMap becomes Option[T]
     */
-  stringToInt("10").foreach { i => println(i) }
-  stringToInt("10") match {
-    case Some(i) => println(i)
-    case None => println("invalid input")
-  }
-
+  Option("A") foreach { i => println(i) }
 }

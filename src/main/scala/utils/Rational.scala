@@ -1,4 +1,4 @@
-package math
+package utils
 
 object Rational extends App {
   val r1 = new Rational(1, 3)

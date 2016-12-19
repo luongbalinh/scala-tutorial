@@ -3,7 +3,7 @@ package collection
 /**
  * Created by Luong on 30/7/15.
  */
-object MyFilter {
+object Filter1 {
   def main(args: Array[String]) {
     val result = (1 to 100).filter(n => {
       n match {

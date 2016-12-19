@@ -32,6 +32,11 @@ object MyExtractor extends App {
     case Names(lastName, firstName, _*) => "Good morning, " + firstName + " " + lastName + "!"
     case _ => "Welcome! Please make sure to fill in your name!"
   }
+
+  "linhluongba@gmail.com" match {
+    case EmailHelper(email) => println(s"Valid email: name = ${email.name}, domain = ${email.domain}")
+    case _ => println("Invalid email.")
+  }
 }
 
 trait User {
@@ -82,5 +87,16 @@ object Names {
   val pets = List("cat", "dog", "frog")
   Seq(1, 2, 42) collect pets // List("dog", "frog")
 
+}
+
+case class Email(name: String, domain: String)
+
+object EmailHelper {
+  def apply(name: String, domain: String): Option[Email] = Some(Email(name, domain))
+
+  def unapply(email: String): Option[Email] = {
+    val parts = email.split("@")
+    if (parts.size == 2) Some(Email(parts.head, parts(1))) else None
+  }
 }
 
