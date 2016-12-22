@@ -5,8 +5,8 @@ import java.net.URL
 import scala.util.{Failure, Success, Try}
 
 /**
-  * Try returns failure information rather than a None (as in Option).
-  * Using Try when you need the error message
+  * Handle exceptions. However, its left type is fixed as Throwable.
+  * Therefore, we cannot create your own error type and use it as a method result in Try
   */
 
 object Try1 extends App {

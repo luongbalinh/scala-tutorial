@@ -3,7 +3,7 @@ package typesystem
 object PathDependentType extends App {
   val s1 = new Service
   val s2 = new Service {
-    override val logger = s1.logger // ERROR
+    //    override val logger = s1.logger // ERROR
   }
 }
 

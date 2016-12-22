@@ -1,26 +1,33 @@
-package async
+package basic
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.util.{Failure, Random, Success}
 
 /**
- * Future is a write-once container – after a future has been completed, it is effectively immutable.
- */
+  * Future is a write-once container – after a future has been completed, it is effectively immutable.
+  *
+  * When you wrap your code inside Future.apply, it starts executing immediately.
+  */
 
-object Future1 {
-  def main(args: Array[String]) {
-    grind("baked beans").onComplete {
-      case Success(ground) => println(s"got my $ground")
-      case Failure(ex) => println("This grinder needs a replacement, seriously!")
-    }
+object Future1 extends App {
 
-//    val temperatureOkay: Future[Boolean] = heatWater(Water(25)).map { water =>
-//      println("we're in the future!")
-//      (80 to 85).contains(water.temperature)
-//    }
+  def performAction(num: Int): Unit =
+    println(s"Task #$num is executing in ${Thread.currentThread().getName}")
+
+  val resultF = Future {
+    performAction(0)
   }
 
+  // Future.successful run the Future in the current thread -> no more asynchronous
+  val result2F = Future.successful {
+    performAction(1)
+  }
+
+  grind("baked beans").onComplete {
+    case Success(ground) => println(s"got my $ground")
+    case Failure(ex) => println("This grinder needs a replacement, seriously!")
+  }
 
   // Some type aliases, just for getting more meaningful method signatures:
   type CoffeeBeans = String

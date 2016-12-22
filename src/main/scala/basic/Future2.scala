@@ -1,9 +1,9 @@
-package async
+package basic
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
-import scala.util.{Failure, Random, Success}
+import scala.util.{Failure, Success}
 
 /**
   * Wrap a code block in Future does not make it non-blocking, it just means the block will be executed in a different thread.

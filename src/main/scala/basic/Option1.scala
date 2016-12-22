@@ -9,7 +9,11 @@ object Option1 extends App {
     else Some(numbers.sum / numbers.length)
   }
 
-  // Return an Option from a method
+  /**
+    * Handle exception. However, Option can only tell 1 error reason which is only defined in the the method's logic.
+    *
+    * For 2 error reasons, use Try or scalaz (http://typelevel.org/blog/2014/02/21/error-handling.html)
+    */
   def stringToInt(s: String): Option[Int] = {
     try {
       Some(Integer.parseInt(s))

@@ -1,11 +1,10 @@
-package async
+package basic
 
 import scala.concurrent._
 
 // futures will spawn threads in the global context thread pool
 
-import ExecutionContext.Implicits.global
-
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.Random
 
 object FuturesApp extends App {
