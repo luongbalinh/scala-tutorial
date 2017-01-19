@@ -12,4 +12,25 @@ object Either1 extends App {
     if (source <= 60) Right(source)
     else Left(new Exception("The generated number is too big!"))
   }
+
+  sealed trait Success
+
+  object success extends Success {
+    override def toString: String = "success"
+  }
+
+  case class Failed(msg: String)
+
+  def write(): Either[Failed, Success] = {
+    Right(success)
+  }
+
+  def log(): Either[Failed, Success] = {
+    Left(Failed("in log"))
+  }
+
+  def run(): Either[Failed, Success] = {
+    //    write().map(_ => log()) // compilation ERROR
+    ???
+  }
 }

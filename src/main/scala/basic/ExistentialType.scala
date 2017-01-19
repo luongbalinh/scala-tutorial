@@ -5,5 +5,5 @@ package basic
   */
 object ExistentialType extends App {
 
-  def printContents(list: List[_]): Unit = list.foreach(println(_))
+  def printContents(list: List[_]): Unit = list.foreach(println)
 }

@@ -1,7 +1,9 @@
 package scalaz
 
 /**
-  * It uses the @@ symbol to "tag" an existing type as another type, i.e. create a new type
+  * It uses the @@ symbol to "tag" an existing type as another type, i.e. create a new type.
+  *
+  * Tag is another way to enforce compile-type checking without incurring the cost of instance instantiation (like value classes).
   */
 sealed trait KiloGram
 

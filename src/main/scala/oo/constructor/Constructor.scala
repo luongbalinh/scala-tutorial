@@ -14,9 +14,7 @@ package oo.constructor
   * constructor arguments are var, they are members of the class, and getter and setter are automatically generated
   * for them. If they are val, they are members of the class, and only getter is generated.
   */
-object Constructor {
-
-  def main(args: Array[String]) {
+object Constructor extends App{
     val a1 = new Address("1 Scala Lane", "Anytown", "CA", "98765")
     val a2 = new Address("98765")
 
@@ -27,7 +25,6 @@ object Constructor {
 
     val ceo = new Employee("Joe CEO", title = "CEO")
     new Employee("Buck Trends4", Some(20), Some(a1), "Zombie Dev", Some(ceo))
-  }
 }
 
 // the primary constructor is the entire body of the class
