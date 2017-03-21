@@ -32,3 +32,20 @@ javaOptions := Seq(
   "-XX:+DebugNonSafepoints",
   "- XX:FlightRecorderOptions=defaultrecording=true,dumponexit=true,dumponexitpath=/tmp/order-book.jfr"
 )
+
+import sbtrelease.ReleasePlugin.autoImport.ReleaseTransformations._
+
+releaseProcess := Seq[ReleaseStep](
+  checkSnapshotDependencies,
+  inquireVersions,
+  runClean,
+  runTest,
+  setReleaseVersion,
+  commitReleaseVersion,
+  tagRelease,
+  publishArtifacts,
+  //  releaseStepTask(bintrayRelease in `sbt-release`),
+  setNextVersion,
+  commitNextVersion,
+  pushChanges
+)
