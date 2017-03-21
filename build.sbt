@@ -1,3 +1,6 @@
+lazy val `scala-tutorial` = project in file(".")
+
+
 name := "scala-tutorial"
 
 version := "1.0"
