@@ -6,10 +6,6 @@ import org.scalacheck.Prop._
 
 object StringSpec extends Properties("Test a") {
 
-  property("concatenate alo") = forAll { a: String =>
-    a.length >= 1
-  }
-
   // Compound property
   val startsWith = forAll { (a: String, b: String) =>
     (a + b).startsWith(a)
