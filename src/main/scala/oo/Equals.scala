@@ -23,9 +23,7 @@ import scala.collection.immutable.HashMap
  * By default, Scala uses object location equality and hashing. Object location equality is using the address in
  * memory for an object as the only factor to determine if two objects are equal.
  */
-object Equals {
-  def main(args: Array[String]) {
-
+object Equals extends App{
     val pointX = new Point2(1, 1)
     val pointY = new Point2(2, 1)
     val pointZ = new Point2(4, 4)
@@ -37,9 +35,6 @@ object Equals {
     println(pointX == pointZ)
     println(map(pointX))
     println(map(pointZ))
-
-  }
-
 }
 
 class Point2(var x: Int, var y: Int) extends Equals {

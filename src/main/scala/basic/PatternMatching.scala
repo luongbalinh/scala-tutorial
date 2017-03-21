@@ -11,15 +11,6 @@ object PatternMatching extends App {
 
   // value definition
   val (result2, _) = ("Value", 20)
-
-  // regex
-  val regex =
-    """\((.+)\)\[([0-9]+)\]""".r
-  val result3 = "(ab)[1];(cde)[11]".split(";") map {
-    case regex(word, value) => (word, value.toInt)
-  }
-
-  println("debug point")
 }
 
 

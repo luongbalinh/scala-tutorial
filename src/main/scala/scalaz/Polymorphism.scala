@@ -39,6 +39,7 @@ object Polymorphism extends App {
     o.offspringName(t)
   }
 
+  // type class interface
   trait OffspringName[T] {
     def offspringName(t: T): String
   }

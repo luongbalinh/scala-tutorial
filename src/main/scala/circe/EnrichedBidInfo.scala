@@ -1,0 +1,28 @@
+package circe
+case class EnrichedBidInfo(
+    bidId: String,
+    hourEpoch: Long,
+    ioId: Long,
+    parentId: Long,
+    campaignId: Long,
+    osId: Int,
+    exchangeId: Long,
+    platformId: Long,
+    publisher: String,
+    brand: String,
+    model: String,
+    skyhook: Int,
+    bidAmount: Long,
+    bidFloor: Long,
+    pubId: String,
+    appId: String,
+    bundleId: String,
+    isInterstitial: String,
+    deviceType: String,
+    osVersion: String,
+    deviceCarrier: String,
+    connectionType: String,
+    clickProbability: Long,
+    audienceListCost: Long,
+    pocketmathFee: Long
+)
